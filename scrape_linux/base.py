@@ -63,7 +63,7 @@ try:
     # element = driver.find_element_by_xpath("//label[contains(text(), '練馬区')]")
     # element.find_element_by_xpath('..//input').click()
 
-    for city in ['板橋区', '北区', '杉並区', '中野区', '練馬区', '豊島区', '江東区']:
+    for city in ['板橋区', '北区', '杉並区', '中野区', '練馬区', '豊島区']:
         xpath_arg = "//label[contains(text(), '%s')]" % city
         element = WebDriverWait(driver, 30).until(
             EC.visibility_of_element_located((By.XPATH, xpath_arg)))
@@ -170,7 +170,7 @@ try:
     # メール送信
     target_list = []
     for estimate_name in ['コーシャハイム向原ガーデンコート', 'コーシャハイム加賀',
-                          'コーシャハイム田端テラス', 'コーシャハイム中野フロント', '南砂']:
+                          'コーシャハイム田端テラス', 'コーシャハイム中野フロント']:
         tmp_list = [estimate for estimate in add_list if estimate_name in estimate]
         target_list += tmp_list
     # print(target_list)
@@ -194,7 +194,7 @@ try:
 
     gmail_account = 'socskmbn10yz@gmail.com'
     gmail_password = 'xmjqaxwenlptkmkr'
-    mail_to = 'bizbnskmyz14-tojkk@yahoo.co.jp'
+    mail_to = 'bizbnskmyz14-tojkk@yahoo.co.jp, miwa-november19@ezweb.ne.jp'
     subject = '新着　希望物件'
     body = body_text
     msg = MIMEText(body)
@@ -213,8 +213,8 @@ except Exception as e:
     # print('Error: %s', e)
     os.makedirs('./errors', exist_ok=True)
     file_path = './errors/error.log'
-    output_str = '%s Error occurred : %s' % \
-                 (datetime.now().strftime('%Y-%m-%dT%H%M%S'), e)
+    output_str = '%s Error occurred : %s, repr: %s' % \
+                 (datetime.now().strftime('%Y-%m-%dT%H%M%S'), str(e), repr(e))
     with open(file_path, 'a') as f:
         f.write(output_str)
 
